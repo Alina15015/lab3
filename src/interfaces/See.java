@@ -3,5 +3,5 @@ package interfaces;
 import other.*;
 
 public interface See {
-    public void seeing(Thing smth);
+    public void see(Entity smth, boolean neg);
 }

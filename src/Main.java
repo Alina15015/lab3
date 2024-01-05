@@ -1,5 +1,6 @@
 import other.Human;
 import other.Moves;
+import other.Places;
 import other.Thing;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
         Human solider1 = new Human("Первый солдат");
         Human solider2 = new Human("Второй солдат");
         Human jack = new Human("Червонный Валет");
+        Human king = new Human("Король");
         Human rabbit = new Human("Белый Кролик");
         Human judge = new Human("Судья");
         Thing throne = new Thing("судейский трон");
@@ -20,21 +22,34 @@ public class Main {
         Thing pies = new Thing("пирожки");
         Thing table = new Thing("стол");
         Thing spit = new Thing("слюнки");
+        Thing wig = new Thing("парик");
         Thing surrounding = new Thing("окружение");
         Thing everything = new Thing("все");
 
-
-
-        table.doing(Moves.STAND, judgment, false);
-        dish.doing(Moves.STAND_BEAUTIFUL, table, false);
-        pies.addStatus("имеют аппетитный вид");
+        jack.stand_where(throne, Places.FRONT, false);
+        jack.addThing(chains);
+        jack.printThings();
+        solider1.stand_where(jack, Places.LEFT, false);
+        solider2.stand_where(jack, Places.RIGHT, false);
+        rabbit.stand_where(king, Places.RIGHT, false);
+        rabbit.addThing(pipe);
+        rabbit.addThing(scroll);
+        rabbit.printThings();
+        table.stand_where(judgment, Places.CENTER, false);
+        dish.stand(table, false);
+        dish.addThing(pies);
+        dish.printThings();
+        pies.changeStatus("имеют аппетитный вид");
         pies.printStatus();
-        spit.doing(Moves.LEAK, alice, false);
-        alice.want(Moves.END, court);
-        alice.want(Moves.INVITE, table);
-        alice.seeing(surrounding);
-        alice.doing(Moves.BE, judgment, true);
-        alice.reading(judgment);
-        alice.know(Moves.CALL, everything);
+        alice.addThing(spit);
+        alice.printThings();
+        spit.leak(false);
+        alice.want_to(Moves.END, court, false);
+        alice.want_to(Moves.INVITE, table, false);
+        alice.see(surrounding, false);
+        alice.was(court, true);
+        alice.read(court, false);
+        alice.know(Moves.CALL, everything, false);
+        alice.think(Moves.HAVE, judge, wig);
     }
 }

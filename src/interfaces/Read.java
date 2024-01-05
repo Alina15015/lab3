@@ -3,5 +3,5 @@ package interfaces;
 import other.*;
 
 public interface Read {
-    public void reading(Thing smth);
+    public void read(Entity smth, boolean neg);
 }
