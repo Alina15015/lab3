@@ -1,6 +1,6 @@
 import classes.Human;
 import enums.Moves;
-import enums.Places;
+import classes.Place;
 import classes.Thing;
 import exceptions.AlreadyHaveStatusException;
 import exceptions.TooManyThingsException;
@@ -29,17 +29,17 @@ public class Main {
         Thing everything = new Thing("все");
 
         try {
-            jack.stand_where(throne, Places.FRONT, false);
+            jack.stand_where(throne, Place.Direction.FRONT, false);
             jack.addThing(chains);
             jack.printThings();
-            solider1.stand_where(jack, Places.LEFT, false);
-            solider2.stand_where(jack, Places.RIGHT, false);
-            rabbit.stand_where(king, Places.RIGHT, false);
+            solider1.stand_where(jack, Place.Direction.LEFT, false);
+            solider2.stand_where(jack, Place.Direction.RIGHT, false);
+            rabbit.stand_where(king, Place.Direction.RIGHT, false);
             rabbit.leftArm.addThing(pipe);
             rabbit.leftArm.printThings();
             rabbit.rightArm.addThing(scroll);
             rabbit.rightArm.printThings();
-            table.stand_where(judgment, Places.CENTER, false);
+            table.stand_where(judgment, Place.Direction.CENTER, false);
             dish.stand(table, false);
             dish.addThing(pies);
             dish.printThings();

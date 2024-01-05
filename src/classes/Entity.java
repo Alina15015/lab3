@@ -1,6 +1,5 @@
 package classes;
 
-import enums.Places;
 import exceptions.TooManyThingsException;
 import interfaces.*;
 import exceptions.AlreadyHaveStatusException;
@@ -72,19 +71,12 @@ public abstract class Entity implements Stand, Leak, Was, Have, Status{
         }
     }
 
-    public void stand_where(Entity smth, Places place, boolean neg) {
+    public void stand_where(Entity smth, Place.Direction direction, boolean neg) {
         if (neg) {
-            System.out.print(getName() + " не стоит ");
+            System.out.println(getName() + " не стоит " + direction.getValue() + " " + smth.getName());
         }
         else {
-            System.out.print(getName() + " стоит ");
-        }
-        switch (place) {
-            case LEFT -> System.out.println("слева от " + smth.getName());
-            case RIGHT -> System.out.println("справа от " + smth.getName());
-            case CENTER -> System.out.println("в центре " + smth.getName());
-            case FRONT -> System.out.println("перед " + smth.getName());
-            case BEHIND -> System.out.println("позади  " + smth.getName());
+            System.out.println(getName() + " стоит " + direction.getValue() + " " + smth.getName());
         }
     }
 
