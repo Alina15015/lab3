@@ -1,6 +1,7 @@
 package interfaces;
 
-import other.*;
+import classes.Entity;
+import enums.Moves;
 
 public interface Want {
     public void want_to_do(Moves move, boolean neg);

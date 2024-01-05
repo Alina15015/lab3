@@ -1,6 +1,9 @@
-package other;
+package classes;
 
+import enums.Places;
+import exceptions.TooManyThingsException;
 import interfaces.*;
+import exceptions.AlreadyHaveStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +21,10 @@ public abstract class Entity implements Stand, Leak, Was, Have, Status{
         return this.name;
     }
 
-    public void addThing(Thing smth) {
+    public void addThing(Thing smth) throws TooManyThingsException {
         currentThings.add(smth);
+        if (currentThings.size() > 5) throw new TooManyThingsException(getName() +
+                " имеет слишком много вещей");
     }
 
     public void removeThing(Thing smth) {
@@ -36,7 +41,9 @@ public abstract class Entity implements Stand, Leak, Was, Have, Status{
         }
     }
 
-    public void changeStatus(String status) {
+    public void addStatus(String status) throws AlreadyHaveStatusException {
+        if (currentStatus != null) throw new AlreadyHaveStatusException(getName() +
+                " уже имеет статус");
         currentStatus = status;
     }
 

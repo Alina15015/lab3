@@ -1,6 +1,6 @@
 package interfaces;
 
-import other.Entity;
+import classes.Entity;
 
 public interface Was {
     public void was(Entity smth, boolean neg);

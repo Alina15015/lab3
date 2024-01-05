@@ -1,4 +1,4 @@
-package other;
+package enums;
 
 public enum Places {
     RIGHT,

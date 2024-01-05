@@ -1,6 +1,7 @@
 package interfaces;
 
-import other.*;
+import classes.Entity;
+import enums.Places;
 
 public interface Stand {
     public void stand(Entity smth, boolean neg);

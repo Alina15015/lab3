@@ -1,10 +1,56 @@
-package other;
+package classes;
 
+import enums.Moves;
 import interfaces.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Human extends Entity implements Read, See, Know, Want, Think {
+    public Arm leftArm;
+    public Arm rightArm;
+
     public Human(String name) {
         super(name);
+        leftArm = new Arm("левая рука");
+        rightArm = new Arm("правая рука");
+    }
+
+    public class Arm implements Have {
+        private String name;
+        private Human owner = Human.this;
+        private List<Thing> currentThings = new ArrayList<>();
+
+        private Arm(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        private Human getOwner() {
+            return owner;
+        }
+
+        public void addThing(Thing smth) {
+            currentThings.add(smth);
+        }
+
+        public void removeThing(Thing smth) {
+            currentThings.remove(smth);
+        }
+
+        public void printThings() {
+            if (currentThings.isEmpty()) {
+                System.out.println(getOwner().getName() + " ничего не держит в своей " + getName());
+            } else {
+                for(Thing thing : currentThings) {
+                    System.out.println(getOwner().getName() + " держит " + thing.getName()
+                            + " в своей " + getName());
+                }
+            }
+        }
     }
 
     public void want_to_do(Moves move, boolean neg){
